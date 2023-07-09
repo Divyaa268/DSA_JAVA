@@ -1,5 +1,6 @@
 package Arrays;
 
+// Time Complexity - O(log n)
 public class BinarySearch {
 
     public static int binarySearch(int a[], int n)
