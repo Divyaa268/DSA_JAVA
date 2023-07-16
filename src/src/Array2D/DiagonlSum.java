@@ -35,6 +35,26 @@ public class DiagonlSum {
 
         }
 
+        public static void diagonalSumLinear(int a[][])
+        {
+            int n = a.length;
+            int sum = 0;
+
+            for(int i=0;i<n;i++)
+            {
+                // primary dia
+                sum += a[i][i];
+
+                if( i != n-1-i)
+                {
+                    sum += a[i][n-1-i];
+                }
+            }
+            System.out.println("Linear " + sum );
+
+
+        }
+
     public static void main(String[] args) {
 
         int a[][] = new int[4][4];
@@ -56,5 +76,6 @@ public class DiagonlSum {
         }
 
         diagonalSum(a);
+        diagonalSumLinear(a);
     }
 }
