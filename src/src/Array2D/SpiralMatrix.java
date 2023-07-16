@@ -1,58 +1,62 @@
 package Array2D;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SpiralMatrix {
 
-    public static void spiral(int a[][])
-    {
+    public static List<Integer> spiral(int a[][]) {
 
-        int  startRow = 0;
-        int endRow = a.length-1;
+        int startRow = 0;
+        int endRow = a.length - 1;
         int startCol = 0;
-        int endCol = a[0].length-1;
+        int endCol = a[0].length - 1;
 
-        while( startRow <= endRow && startCol <= endCol)
-        {
+        List<Integer> result = new ArrayList<>();
+
+        while (startRow <= endRow && startCol <= endCol) {
             // Top
-            for(int j = startCol; j<=endCol;j++)
-            {
+            for (int j = startCol; j <= endCol; j++) {
                 System.out.print(a[startRow][j] + " ");
+                result.add(a[startRow][j]);
+
             }
             startRow++;
 
             // Right
-            for(int i=startRow;i<=endRow;i++)
-            {
-                System.out.print(a[i][endCol]  + " ");
+            for (int i = startRow; i <= endRow; i++) {
+                System.out.print(a[i][endCol] + " ");
+                result.add(a[i][endCol]);
             }
             endCol--;
 
             // Bottom
-            for(int j=endCol; j>= startCol;j--)
-            {
-                if( startRow == endRow)
-                {
+            for (int j = endCol; j >= startCol; j--) {
+                if (startRow == endRow) {
                     break;
                 }
                 System.out.print(a[endRow][j] + " ");
+                result.add(a[endRow][j]);
             }
             endRow--;
 
             // Left
-            for(int i= endRow; i>= startRow;i--)
-            {
-                if(startCol==endCol)
-                {
+            for (int i = endRow; i >= startRow; i--) {
+                if (startCol == endCol) {
                     break;
                 }
                 System.out.print(a[i][startCol] + " ");
+                result.add(a[i][startCol]);
             }
             startCol++;
 
         }
+
         System.out.println();
+        return result;
     }
+
 
 //
 //    public static void spiralPrint(int matrix[][]){
