@@ -18,7 +18,7 @@ public class SpiralMatrix {
         while (startRow <= endRow && startCol <= endCol) {
             // Top
             for (int j = startCol; j <= endCol; j++) {
-                System.out.print(a[startRow][j] + " ");
+//                System.out.print(a[startRow][j] + " ");
                 result.add(a[startRow][j]);
 
             }
@@ -26,34 +26,32 @@ public class SpiralMatrix {
 
             // Right
             for (int i = startRow; i <= endRow; i++) {
-                System.out.print(a[i][endCol] + " ");
+//                System.out.print(a[i][endCol] + " ");
                 result.add(a[i][endCol]);
             }
             endCol--;
 
             // Bottom
-            for (int j = endCol; j >= startCol; j--) {
-                if (startRow == endRow) {
-                    break;
+            if(startRow <= endRow) {
+                for (int j = endCol; j >= startCol; j--) {
+//                    System.out.print(a[endRow][j] + " ");
+                    result.add(a[endRow][j]);
                 }
-                System.out.print(a[endRow][j] + " ");
-                result.add(a[endRow][j]);
             }
             endRow--;
 
             // Left
-            for (int i = endRow; i >= startRow; i--) {
-                if (startCol == endCol) {
-                    break;
+            if(startCol <= endCol) {
+                for (int i = endRow; i >= startRow; i--) {
+//                    System.out.print(a[i][startCol] + " ");
+                    result.add(a[i][startCol]);
                 }
-                System.out.print(a[i][startCol] + " ");
-                result.add(a[i][startCol]);
             }
             startCol++;
 
         }
 
-        System.out.println();
+//        System.out.println();
         return result;
     }
 
