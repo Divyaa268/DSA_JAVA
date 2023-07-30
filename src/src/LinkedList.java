@@ -133,11 +133,31 @@ public class LinkedList {
         {
             prev = prev.next;
         }
-        int val = prev.next.data;
+        int val = prev.next.data; // tail.data
         prev.next = null;
         tail = prev;
         length--;
         return val;
+    }
+
+    public int searchIterative(int key)
+    {
+        Node temp = head;
+        int i = 0;
+
+        while(temp != null)
+        {
+            if(temp.data == key)
+            {
+                return i;
+            }
+            else
+            {
+                temp = temp.next;
+                i++;
+            }
+        }
+        return -1;
     }
 
 
@@ -157,6 +177,9 @@ public class LinkedList {
         ll.removeLast();
         ll.printLL();
         System.out.println("Length of LL is: " + length );
+
+        int index = ll.searchIterative(8);
+        System.out.println("Key found at index : " + index);
 
     }
 }
