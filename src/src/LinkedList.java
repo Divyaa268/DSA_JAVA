@@ -140,7 +140,7 @@ public class LinkedList {
         return val;
     }
 
-    public int searchIterative(int key)
+    public int searchIterative(int key)  // TC - O(N)
     {
         Node temp = head;
         int i = 0;
@@ -160,6 +160,29 @@ public class LinkedList {
         return -1;
     }
 
+    public int searchHelper(Node head, int key)
+    {
+        if(head == null)
+        {
+            return -1;
+        }
+        if(head.data == key)
+        {
+            return 0;
+        }
+        int index = searchHelper(head.next, key);
+        if(index == -1)
+        {
+            return -1;
+        }
+        return index + 1;
+    }
+
+    public int searchRecursive(int key)
+    {
+        return searchHelper(head, key);
+    }
+
 
     public static void main(String args[])
     {
@@ -172,14 +195,19 @@ public class LinkedList {
         ll.printLL();
         System.out.println("Length of LL is: " + length );
 
-        ll.removeFirst();
-        ll.printLL();
-        ll.removeLast();
-        ll.printLL();
-        System.out.println("Length of LL is: " + length );
+//        ll.removeFirst();
+//        ll.printLL();
+//        ll.removeLast();
+//        ll.printLL();
+//        System.out.println("Length of LL is: " + length );
 
         int index = ll.searchIterative(8);
-        System.out.println("Key found at index : " + index);
+        System.out.println("Key found at index (Iterative) : " + index);
+
+        int index1 = ll.searchRecursive(8);
+        System.out.println("Key found at index (Recursive) : " + index1);
+
+
 
     }
 }
