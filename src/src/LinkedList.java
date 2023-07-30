@@ -95,8 +95,21 @@ public class LinkedList {
 
     public int removeFirst()
     {
+        if(length == 0)
+        {
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        }
+        else if(length == 1)
+        {
+            int val = head.data;
+            head = tail = null; // After removing one node, both head and tail are null
+            length = 0;
+            return val;
+        }
         int val = head.data;
         head = head.next;
+        length--;
         return val;
     }
 
