@@ -199,6 +199,53 @@ public class LinkedList {
          head = prev;
     }
 
+    public void deleteNthFromEnd(int n)
+    {
+        // calculate size of LL
+        Node temp = head;
+        int size = 0;
+
+        while (temp != null)
+        {
+            temp = temp.next;
+            size++;
+        }
+
+        // Check if n is the head to be deleted
+        if(n == size)
+        {
+            head = head.next; // remove first
+            return;
+        }
+
+        // size - n + 1
+        int i = 1;
+        int iToFind = size - n; // n from end = size - n + 1 from beginning
+        Node prev = head;
+
+        // go till one node before nth node to be deleted i.e. size - n
+        while (i < iToFind)
+        {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
+    public Node findMid(Node head)
+    {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null)
+        {
+            slow = slow.next; // +1
+            fast = fast.next.next; // +2
+        }
+        return slow; // slow is at my midpoint
+
+    }
 
     public static void main(String args[])
     {
@@ -222,8 +269,11 @@ public class LinkedList {
 //
 //        int index1 = ll.searchRecursive(8);
 //        System.out.println("Key found at index (Recursive) : " + index1);
+//
+//        ll.reverse();
+//        ll.printLL();
 
-        ll.reverse();
+        ll.deleteNthFromEnd(3);
         ll.printLL();
 
 
