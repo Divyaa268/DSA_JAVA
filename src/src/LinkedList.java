@@ -46,7 +46,7 @@ public class LinkedList {
         tail = newNode;
     }
 
-    public void printLL()
+    public void printLL()  // TC - O(N)
     {
         if(head == null)
         {
