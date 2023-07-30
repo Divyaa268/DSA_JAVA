@@ -183,6 +183,22 @@ public class LinkedList {
         return searchHelper(head, key);
     }
 
+    public void reverse()
+    {
+        Node prev = null;
+        Node curr = head;
+        Node next = null;
+
+        while(curr != null)
+        {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+         head = prev;
+    }
+
 
     public static void main(String args[])
     {
@@ -201,12 +217,14 @@ public class LinkedList {
 //        ll.printLL();
 //        System.out.println("Length of LL is: " + length );
 
-        int index = ll.searchIterative(8);
-        System.out.println("Key found at index (Iterative) : " + index);
+//        int index = ll.searchIterative(8);
+//        System.out.println("Key found at index (Iterative) : " + index);
+//
+//        int index1 = ll.searchRecursive(8);
+//        System.out.println("Key found at index (Recursive) : " + index1);
 
-        int index1 = ll.searchRecursive(8);
-        System.out.println("Key found at index (Recursive) : " + index1);
-
+        ll.reverse();
+        ll.printLL();
 
 
     }
