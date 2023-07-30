@@ -15,10 +15,13 @@ public class LinkedList {
     public static Node head;
     public static Node tail;
 
+    public static int length;
+
     public void addFirst(int data)  // TC = O(1)
     {
         // create a new node
         Node newNode = new Node(data);
+        length++;
 
         // if LL is empty
         if(head == null)
@@ -36,6 +39,7 @@ public class LinkedList {
     public void addLast(int data)  // TC O(1)
     {
         Node newNode = new Node(data);
+        length++;
 
         if(head == null)
         {
@@ -63,6 +67,32 @@ public class LinkedList {
         System.out.println("null");
     }
 
+    public void addAtIndex(int data, int index)
+    {
+        if(index == 0)
+        {
+            addFirst(data);
+            return;
+        }
+        Node newNode = new Node(data);
+        length++;
+
+        int pos = 0;
+        Node temp = head;
+
+        while(pos < index - 1 && temp != null)
+        {
+            temp = temp.next;
+            pos++;
+        }
+
+        if(temp != null) {
+            // pos = index - 1 (temp -> prev)
+            newNode.next = temp.next;
+            temp.next = newNode;
+        }
+    }
+
     public static void main(String args[])
     {
         LinkedList ll = new LinkedList();
@@ -70,6 +100,8 @@ public class LinkedList {
         ll.addFirst(1);
         ll.addLast(3);
         ll.addLast(4);
+        ll.addAtIndex(8, 3);
         ll.printLL();
+        System.out.println("Length of LL is: " + length );
     }
 }
