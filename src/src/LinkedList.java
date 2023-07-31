@@ -247,16 +247,56 @@ public class LinkedList {
 
     }
 
+    public boolean checkPalindrome()
+    {
+        // base case
+        if(head == null || head.next == null)
+        {
+            return true;
+        }
+
+        // find mid
+        Node midNode = findMid(head);
+
+        // Reverse second half of LL
+        Node prev = null;
+        Node curr = midNode;
+        Node next = null;
+
+        while (curr != null)
+        {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev; // Right half's head
+        Node left = head;
+
+        // Check if left and right LL are equal
+        while(right != null)
+        {
+            if(left.data != right.data)
+            {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+
+    }
+
     public static void main(String args[])
     {
         LinkedList ll = new LinkedList();
         ll.addFirst(2);
         ll.addFirst(1);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.addAtIndex(8, 3);
-        ll.printLL();
-        System.out.println("Length of LL is: " + length );
+        ll.addLast(2);
+        ll.addLast(1);
+//        ll.addAtIndex(8, 3);
+//        ll.printLL();
+//        System.out.println("Length of LL is: " + length );
 
 //        ll.removeFirst();
 //        ll.printLL();
@@ -273,8 +313,11 @@ public class LinkedList {
 //        ll.reverse();
 //        ll.printLL();
 
-        ll.deleteNthFromEnd(3);
-        ll.printLL();
+//        ll.deleteNthFromEnd(3);
+//        ll.printLL();
+
+        boolean palin = ll.checkPalindrome();
+        System.out.println(palin);
 
 
     }
