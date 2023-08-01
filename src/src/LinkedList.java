@@ -305,6 +305,115 @@ public class LinkedList {
         return false;
     }
 
+    public void removeCycle()
+    {
+        // Detect cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+
+        while (fast != null && fast.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast)
+            {
+                cycle = true;
+                break;
+            }
+        }
+        if(cycle == false)
+        {
+            return;
+        }
+
+        // Find meeting point
+        slow = head;
+        Node prev = null;
+
+        while (slow != fast) // meet at cycle creation point
+        {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // Remove cycle
+        prev.next = null;
+    }
+
+    private Node getMid(Node head)
+    {
+        Node slow = head;
+        Node fast = head.next;
+
+        while (fast != null && fast.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow; // mid
+
+    }
+
+    public Node merge(Node head1, Node head2)
+    {
+        Node mergedLL = new Node(-1);
+        Node temp = mergedLL;
+
+        while( head1 != null && head2 != null)
+        {
+            if(head1.data <= head2.data)
+            {
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            }
+            else
+            {
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+        // Remaining elements
+        while(head1 != null)
+        {
+            temp.next = head1;
+            head1 = head1.next;
+            temp = temp.next;
+        }
+        while(head2 != null)
+        {
+            temp.next = head2;
+            head2 = head2.next;
+            temp = temp.next;
+        }
+        return mergedLL.next;
+    }
+
+    public Node mergeSort(Node head)
+    {
+        if(head == null && head.next == null) // already sorted if empty or one node
+        {
+            return head;
+        }
+
+        // Find mid
+        Node mid = getMid(head);
+
+        // left & right MS
+        Node rightHead = mid.next;
+        mid.next = null;
+
+        Node newLeft = mergeSort(head);
+        Node newRight = mergeSort(rightHead);
+
+        // Merge
+        return merge(newLeft, newRight);
+    }
+
     public static void main(String args[])
     {
         LinkedList ll = new LinkedList();
@@ -337,13 +446,21 @@ public class LinkedList {
 //        boolean palin = ll.checkPalindrome();
 //        System.out.println(palin);
 
-        // For loop detection
+        // For loop detection  1 -> 2 -> 3 -> 2
         head = new Node(1);
-        head.next = new Node(2);
+        Node temp = new Node(2);
+        head.next = temp;
         head.next.next = new Node(3);
-//        head.next.next.next = head;
+        head.next.next.next = temp;
         boolean cycle = ll.isCycle();
         System.out.println(cycle);
+
+
+        ll.removeCycle();
+        boolean cycle1 = ll.isCycle();
+        System.out.println(cycle1);
+
+
 
 
 
