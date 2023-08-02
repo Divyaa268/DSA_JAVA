@@ -395,7 +395,7 @@ public class LinkedList {
 
     public Node mergeSort(Node head)
     {
-        if(head == null && head.next == null) // already sorted if empty or one node
+        if(head == null || head.next == null) // already sorted if empty or one node
         {
             return head;
         }
@@ -417,12 +417,12 @@ public class LinkedList {
     public static void main(String args[])
     {
         LinkedList ll = new LinkedList();
-//        ll.addFirst(2);
-//        ll.addFirst(1);
-//        ll.addLast(3);
-//        ll.addLast(4);
-//        ll.addAtIndex(8, 1);
-//        ll.printLL();
+        ll.addFirst(2);
+        ll.addFirst(1);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addAtIndex(8, 1);
+        ll.printLL();
 //        System.out.println("Length of LL is: " + length );
 
 //        ll.removeFirst();
@@ -447,18 +447,21 @@ public class LinkedList {
 //        System.out.println(palin);
 
         // For loop detection  1 -> 2 -> 3 -> 2
-        head = new Node(1);
-        Node temp = new Node(2);
-        head.next = temp;
-        head.next.next = new Node(3);
-        head.next.next.next = temp;
-        boolean cycle = ll.isCycle();
-        System.out.println(cycle);
+//        head = new Node(1);
+//        Node temp = new Node(2);
+//        head.next = temp;
+//        head.next.next = new Node(3);
+//        head.next.next.next = temp;
+//        boolean cycle = ll.isCycle();
+//        System.out.println(cycle);
+//
+//
+//        ll.removeCycle();
+//        boolean cycle1 = ll.isCycle();
+//        System.out.println(cycle1);
 
-
-        ll.removeCycle();
-        boolean cycle1 = ll.isCycle();
-        System.out.println(cycle1);
+        head = ll.mergeSort(head);
+        ll.printLL();
 
 
 
