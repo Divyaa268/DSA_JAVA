@@ -431,13 +431,33 @@ public class LinkedList {
         Node curr = mid.next;
         mid.next = null;
 
+        Node prev = null;
+        Node next = null;
 
-
+        while (curr != null)
+        {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
 
         // Alternate merging
+        Node leftH = head;
+        Node rightH = prev;
+        Node nextL, nextR;
 
+        while (leftH != null && rightH != null)
+        {
+            nextL = leftH.next;
+            leftH.next = rightH;
+            nextR = rightH.next;
+            rightH.next = nextL;
 
-
+            // updating LH AND RH
+            leftH = nextL;
+            rightH = nextR;
+        }
     }
 
     public static void main(String args[])
@@ -486,7 +506,10 @@ public class LinkedList {
 //        boolean cycle1 = ll.isCycle();
 //        System.out.println(cycle1);
 
-        head = ll.mergeSort(head);
+//        head = ll.mergeSort(head);
+//        ll.printLL();
+
+        ll.zigZag();
         ll.printLL();
 
 
