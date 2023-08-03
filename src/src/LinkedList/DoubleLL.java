@@ -26,12 +26,14 @@ public class DoubleLL {
         if(head == null)
         {
             head = tail = newNode;
+            size++;
             return;
         }
 
         newNode.next = head;
         head.prev = newNode;
         head = newNode;
+        size++;
     }
 
     // Remove
@@ -56,6 +58,51 @@ public class DoubleLL {
         return val;
     }
 
+    public void addLast(int data)
+    {
+        Node newNode =  new Node(data);
+        if(head == null)
+        {
+            head = tail = newNode;
+            size++;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null)
+        {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        newNode.prev = temp;
+        newNode.next = null;
+        size++;
+    }
+
+    public int removeLast()
+    {
+        if(head == null)
+        {
+            System.out.println("DLL is empty");
+            return  Integer.MIN_VALUE;
+        }
+        if(head.next == null)
+        {
+            int val = head.data;
+            head = tail = null;
+            size--;
+            return val;
+        }
+        Node temp = head;
+        while (temp.next.next != null) // go till second last node
+        {
+            temp = temp.next;
+        }
+        int val = temp.next.data;
+        temp.next = null;
+        size--;
+        return val;
+    }
+
 
     public void printDLL()
     {
@@ -65,7 +112,6 @@ public class DoubleLL {
         {
             System.out.print(temp.data + " <-> ");
             temp = temp.next;
-            size++;
         }
         System.out.println("null");
     }
@@ -73,14 +119,24 @@ public class DoubleLL {
     public static void main(String args[])
     {
         DoubleLL dll = new DoubleLL();
-        dll.addFirst(3);
-        dll.addFirst(2);
-        dll.addFirst(1);
+//        dll.addFirst(3);
+//        dll.addFirst(2);
+//        dll.addFirst(1);
 
+//        dll.printDLL();
+//        System.out.println(dll.size);
+
+//        dll.removeFirst();
+//        dll.printDLL();
+//
+//        dll.addLast(4);
+//        dll.addLast(5);
         dll.printDLL();
         System.out.println(dll.size);
 
-        dll.removeFirst();
+        dll.removeLast();
         dll.printDLL();
+        System.out.println(dll.size);
+
     }
 }
