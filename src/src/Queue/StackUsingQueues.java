@@ -47,7 +47,7 @@ public class StackUsingQueues {
                     top = q1.remove();
                     if(q1.isEmpty())
                     {
-                        break;
+                        break; //  because we get to last element
                     }
                     q2.add(top);
                 }
