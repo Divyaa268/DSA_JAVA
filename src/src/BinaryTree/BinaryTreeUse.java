@@ -35,11 +35,25 @@ public class BinaryTreeUse {
         {
             if(root == null)
             {
+                System.out.print("-1 ");
                 return;
             }
             System.out.print(root.data + " ");
             preorder(root.left);
             preorder(root.right);
+        }
+
+        public static void postorder(Node root)
+        {
+            if(root == null)
+            {
+                System.out.print("-1 ");
+                return;
+            }
+
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data + " ");
         }
 
         public static void main(String[] args) {
@@ -49,7 +63,13 @@ public class BinaryTreeUse {
             Node root = tree.buildTree(nodes);
             System.out.println(root.data);
 
+            System.out.println("Preorder");
             tree.preorder(root);
+
+            System.out.println("Postorder");
+            tree.postorder(root);
+
+
         }
     }
 }
