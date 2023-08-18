@@ -1,5 +1,8 @@
 package BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTreeUse {
 
     static class Node {
@@ -64,8 +67,51 @@ public class BinaryTreeUse {
             }
 
             inorder(root.left);
-            System.out.println(root.data + " ");
+            System.out.print(root.data + " ");
             inorder(root.right);
+        }
+
+        public static void levelOrder(Node root)
+        {
+            if(root == null)
+            {
+                return;
+            }
+
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null); // for next line
+
+            while(!q.isEmpty())
+            {
+                Node currNode = q.remove();
+                if(currNode == null)
+                {
+                    System.out.println();
+                    if(q.isEmpty())
+                    {
+                        break; // if all elements have been fremoved from queue
+                    }
+                    else
+                    {
+                        q.add(null); // adding null so that we can go to next line for the next level
+                    }
+                }
+                else
+                {
+                    System.out.print(currNode.data + " ");
+                    if(currNode.left != null)
+                    {
+                        q.add(currNode.left);
+                    }
+                    if(currNode.right != null)
+                    {
+                        q.add(currNode.right);
+                    }
+                }
+            }
+
+
         }
 
         public static void main(String[] args) {
@@ -78,11 +124,17 @@ public class BinaryTreeUse {
             System.out.println("Preorder");
             tree.preorder(root);
 
+            System.out.println();
             System.out.println("Postorder");
             tree.postorder(root);
 
+            System.out.println();
             System.out.println("Inorder");
             tree.inorder(root);
+
+            System.out.println();
+            System.out.println("Level order");
+            tree.levelOrder(root);
 
 
         }
