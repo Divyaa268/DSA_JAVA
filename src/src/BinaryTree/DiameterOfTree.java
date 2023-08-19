@@ -32,7 +32,7 @@ public class DiameterOfTree {
         return height;
     }
 
-    public static int diameter(Node root)
+    public static int diameter(Node root)  // TC - O(N^2)
     {
         if(root == null)
         {
@@ -52,6 +52,34 @@ public class DiameterOfTree {
         return diameter;
     }
 
+    static class Info
+    {
+        int diam;
+        int ht;
+
+        public Info(int diam, int ht)
+        {
+            this.diam = diam;
+            this.ht = ht;
+        }
+    }
+
+    public static Info diameterOptimized(Node root) // TC - O(N)
+    {
+        if(root == null)
+        {
+            return new Info(0,0);
+        }
+        Info leftInfo = diameterOptimized(root.left);
+        Info rightInfo = diameterOptimized(root.right);
+
+        int diam = Math.max(leftInfo.ht + rightInfo.ht + 1, Math.max(leftInfo.diam, rightInfo.diam));
+
+        int ht = Math.max(leftInfo.ht, rightInfo.ht) + 1;
+
+        return new Info(diam, ht);
+    }
+
     public static void main(String[] args) {
 
         Node root = new Node(1);
@@ -64,5 +92,6 @@ public class DiameterOfTree {
 
         System.out.println("Diameter of tree - " + diameter(root));
 
+        System.out.println(("Diameter of tree (optimized) - " + diameterOptimized(root).diam));
     }
 }
