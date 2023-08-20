@@ -34,8 +34,8 @@ public class TopViewOfTree {
 
     public static void topView(Node root)
     {
-        HashMap<Integer, Node> map = new HashMap<>();
-        Queue<Info> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>(); // stores hd and node value
+        Queue<Info> q = new LinkedList<>(); // for level order traversal
 
         int min= 0;
         int max = 0;
@@ -43,7 +43,8 @@ public class TopViewOfTree {
         q.add(new Info(root, 0));
         q.add(null);
 
-        while(!q.isEmpty()) {
+        while(!q.isEmpty())
+        {
             Info currNode = q.remove();
 
             if (currNode == null) {
