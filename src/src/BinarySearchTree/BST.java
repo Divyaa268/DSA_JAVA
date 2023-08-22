@@ -66,6 +66,51 @@ public class BST {
         }
     }
 
+    public static Node findInorderSuccessor(Node root)
+    {
+        while (root.left != null)
+        {
+            root = root.left;
+        }
+        return root;
+    }
+
+    public static Node delete(Node root, int value)
+    {
+        if(root.data < value)
+        {
+            root.right = delete(root.right, value);
+        }
+        else if (root.data > value)
+        {
+            root.left = delete(root.left, value);
+        }
+        else
+        {
+            // case 1 - leaf node
+            if(root.left == null && root.right == null)
+            {
+                return null;
+            }
+
+            // case 2 - single child
+            if(root.left == null)
+            {
+                return root.right;
+            }
+            else if(root.right == null)
+            {
+                return root.left;
+            }
+
+            // case 3 - two children
+            Node inorderSuccessor = findInorderSuccessor(root.right); // Find IS
+            root.data = inorderSuccessor.data; // replace root with IS
+            root.right = delete(root.right, inorderSuccessor.data); // delete IS
+        }
+        return root;
+    }
+
     public static void main(String[] args) {
 
         int values[] = {5,1,3,4,2,7};
@@ -87,6 +132,11 @@ public class BST {
         {
             System.out.println("Not found!");
         }
+
+        root = delete(root, 1);
+        System.out.println();
+
+        inorder(root);
 
     }
 }
