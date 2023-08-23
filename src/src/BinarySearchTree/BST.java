@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import java.util.ArrayList;
+
 public class BST {
 
     static class Node
@@ -133,6 +135,37 @@ public class BST {
         }
     }
 
+    public static void printPath(ArrayList<Integer> path)
+    {
+        for (int i=0;i<path.size(); i++)
+        {
+            System.out.print(path.get(i) + " -> ");
+        }
+        System.out.println("Null");
+    }
+
+    public static void printRootToLeaf(Node root, ArrayList<Integer> path)
+    {
+        if(root == null)
+        {
+            return;
+        }
+
+        path.add(root.data);
+
+        if(root.left == null && root.right == null) // leaf node
+        {
+            printPath(path);
+        }
+
+        printRootToLeaf(root.left, path);
+        printRootToLeaf(root.right, path);
+
+        path.remove(path.size()-1); // delete current root from the path
+
+
+    }
+
     public static void main(String[] args) {
 
 //        int values[] = {5,1,3,4,2,7};
@@ -147,20 +180,22 @@ public class BST {
         inorder(root);
         System.out.println();
 
-        if(search(root, 11))
-        {
-            System.out.println("Found");
-        }
-        else
-        {
-            System.out.println("Not found!");
-        }
+//        if(search(root, 11))
+//        {
+//            System.out.println("Found");
+//        }
+//        else
+//        {
+//            System.out.println("Not found!");
+//        }
 
 //        root = delete(root, 1);
 //        System.out.println();
 //
 //        inorder(root);
 
-        printInRange(root, 5,12);
+//        printInRange(root, 5,12);
+
+        printRootToLeaf(root, new ArrayList<>());
     }
 }
