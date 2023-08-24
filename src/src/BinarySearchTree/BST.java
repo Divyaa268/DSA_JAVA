@@ -289,13 +289,44 @@ public class BST {
 
     }
 
+    public static int maxSize = 0;
+
+    public static Info largestBST(Node root)
+    {
+        if(root == null)
+        {
+            return new Info(true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+        }
+        Info leftSubtree = largestBST(root.left);
+        Info rightSubtree = largestBST(root.right);
+
+        int size = leftSubtree.size + rightSubtree.size + 1;
+        int min = Math.min(root.data, Math.min(leftSubtree.min, rightSubtree.min));
+        int max = Math.max(root.data, Math.max(leftSubtree.max, rightSubtree.max));
+
+        // check if root is valid bst
+        if(root.data <= leftSubtree.max || root.data >= rightSubtree.max)
+        {
+            return new Info(false, size, min, max);
+        }
+
+        // check valid bst in left and right subtree
+        if(leftSubtree.isBST && rightSubtree.isBST)
+        {
+            maxSize = Math.max(size, maxSize);
+            return new Info(true, size, min, max);
+        }
+        return new Info(false, size, min, max);
+    }
+
 
     public static void main(String[] args) {
 
 //        int values[] = {5,1,3,4,2,7};
 //        int values[] = {8,5,3,1,4,6,10,11,14};
 //          int values[] = {1,1,1};
-        int values[] = {3,5,6,8,10,11,12};
+//        int values[] = {3,5,6,8,10,11,12};
+        int values[] = {45, 60, 65, 70 ,80 };
 
         Node root = null;
 
@@ -340,8 +371,11 @@ public class BST {
 //        root = createBalancedBST(values, 0, values.length-1);
 //        preOrder(root);
 
-        root = convertToBalancedBST(root);
-        preOrder(root);
+//        root = convertToBalancedBST(root);
+//        preOrder(root);
+
+        Info info = largestBST(root);
+        System.out.println("Largest BST Size - " + maxSize);
 
 
     }
