@@ -213,12 +213,73 @@ public class BST {
         preOrder(root.right);
     }
 
+    public static Node createBalancedBST(int arr[], int start, int end)
+    {
+        if(start > end)
+        {
+            return null;
+        }
+        int mid = (start + end)/2;
+
+        Node root = new Node(arr[mid]);
+
+        root.left = createBalancedBST(arr, start, mid-1);
+        root.right = createBalancedBST(arr, mid+1, end);
+
+        return root;
+
+    }
+
+    public static void getInorder(Node root, ArrayList<Integer> arr)
+    {
+        if(root == null)
+        {
+            return;
+        }
+        getInorder(root.left, arr);
+        arr.add(root.data);
+        getInorder(root.right, arr);
+    }
+
+    public static Node createBST(ArrayList<Integer> arr, int start, int end)
+    {
+        if(start > end)
+        {
+            return null;
+        }
+        int mid = (start + end)/2;
+
+        // create root with middle element
+        Node root = new Node(arr.get(mid));
+
+        root.left = createBST(arr, start, mid - 1);
+        root.right = createBST(arr, mid + 1, end);
+
+        return root;
+
+    }
+
+    public static Node convertToBalancedBST(Node root)
+    {
+        // find inorder sequence
+        ArrayList<Integer> inorder = new ArrayList<>();
+        getInorder(root, inorder);
+
+        // create balanced BST from inorder sequence
+        root = createBST(inorder, 0, inorder.size() - 1);
+
+        return root;
+
+    }
+
 
     public static void main(String[] args) {
 
 //        int values[] = {5,1,3,4,2,7};
-        int values[] = {8,5,3,1,4,6,10,11,14};
+//        int values[] = {8,5,3,1,4,6,10,11,14};
 //          int values[] = {1,1,1};
+        int values[] = {3,5,6,8,10,11,12};
+
         Node root = null;
 
         for (int i =0;i<values.length;i++)
@@ -247,17 +308,24 @@ public class BST {
 
 //        printRootToLeaf(root, new ArrayList<>());
 
-        if(isValidBST(root, null, null))
-        {
-            System.out.println("Valid BST");
-        }
-        else
-        {
-            System.out.println("Invalid BST");
-        }
+//        if(isValidBST(root, null, null))
+//        {
+//            System.out.println("Valid BST");
+//        }
+//        else
+//        {
+//            System.out.println("Invalid BST");
+//        }
 
-        root = createMirrorBST(root);
+//        root = createMirrorBST(root);
+//        preOrder(root);
+
+//        root = createBalancedBST(values, 0, values.length-1);
+//        preOrder(root);
+
+        root = convertToBalancedBST(root);
         preOrder(root);
+
 
     }
 }
