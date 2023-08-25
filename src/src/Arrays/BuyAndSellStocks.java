@@ -7,7 +7,7 @@ public class BuyAndSellStocks {
     public static int buySellStocks(int prices[])
     {
         // prices array stores selling price
-        int buyPrice = Integer.MAX_VALUE;
+        int buyPrice = Integer.MAX_VALUE; // tracks lowest buying price
         int maxProfit = 0;
 
         int l = prices.length;
