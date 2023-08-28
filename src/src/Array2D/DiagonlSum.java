@@ -29,7 +29,7 @@ public class DiagonlSum {
                         leftDiagonal += a[i][j];
                 }
                 }
-            }
+        }
         sum += leftDiagonal + rightDiagonal;
             System.out.println(sum);
 
