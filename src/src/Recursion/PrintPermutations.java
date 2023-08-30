@@ -15,6 +15,7 @@ public class PrintPermutations {
             char currChar = s.charAt(i);
             // "abc" -> "ab"
             String newStr = s.substring(0,i) + s.substring(i+1);
+
             permute(newStr, permutation+currChar);
         }
     }
