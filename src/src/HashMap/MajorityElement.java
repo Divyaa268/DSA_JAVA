@@ -31,6 +31,7 @@ public class MajorityElement {
             if(map.get(key) > l/3)
             {
                 System.out.println("Majority element is : " + key);
+
             }
         }
     }
