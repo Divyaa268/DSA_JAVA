@@ -24,6 +24,8 @@ public class MajorityElement {
             }
         }
 
+//        map.put(a[i], map.getOrDefault(a[i], defaultValue: 0 + 1));
+
         Set<Integer> keySet = map.keySet(); // stores and returns key
 
         for (Integer key : keySet)
