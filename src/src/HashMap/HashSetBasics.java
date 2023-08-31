@@ -38,5 +38,19 @@ public class HashSetBasics {
             System.out.println("Doesn't contain 2");
         }
 
+        HashSet<String> cities = new HashSet<>();
+
+        cities.add("Delhi");
+        cities.add("Lucknow");
+        cities.add("Montreal");
+        cities.add("Kolkata");
+
+        Iterator it = cities.iterator();
+
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+        }
+
     }
 }
