@@ -45,11 +45,18 @@ public class HashSetBasics {
         cities.add("Montreal");
         cities.add("Kolkata");
 
+
+        // iteration on hashset
         Iterator it = cities.iterator();
 
         while (it.hasNext())
         {
             System.out.println(it.next());
+        }
+
+        for( String city : cities)
+        {
+            System.out.println(city);
         }
 
     }
