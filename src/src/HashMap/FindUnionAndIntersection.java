@@ -39,6 +39,7 @@ public class FindUnionAndIntersection {
             if(set.contains(arr2[j]))
             {
                 count++;
+                set.remove(arr2[j]);
             }
         }
 
