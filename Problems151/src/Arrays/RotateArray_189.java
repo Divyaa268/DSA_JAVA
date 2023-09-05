@@ -70,13 +70,13 @@ public class RotateArray_189 {
             k += l;
         }
 
-//        reverse(a, 0, l - k - 1);  // first half reverse
-//        reverse(a, l - k, l - 1);  // second half reverse
-//        reverse(a, 0, l - 1);  // whole reverse
-
-        reverse(a, 0, k);  // first half reverse
-        reverse(a, k+1, l - 1);  // second half reverse
+        reverse(a, 0, l - k - 1);  // first half reverse
+        reverse(a, l - k, l - 1);  // second half reverse
         reverse(a, 0, l - 1);  // whole reverse
+
+//        reverse(a, 0, k);  // first half reverse
+//        reverse(a, k+1, l - 1);  // second half reverse
+//        reverse(a, 0, l - 1);  // whole reverse
 
 
     }
