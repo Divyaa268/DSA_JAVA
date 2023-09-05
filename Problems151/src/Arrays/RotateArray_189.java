@@ -26,6 +26,25 @@ public class RotateArray_189 {
 //        }
 //    }
 
+    public static void rotate(int[] arr, int d) {
+
+        int l=arr.length;
+        int t[]=new  int[l];
+        int k=0;
+        for(int i=0;i<d;i++)
+        {
+            t[i]=arr[i];
+
+        }
+        for(int i=d;i<l;i++)
+        {
+            arr[i-d]=arr[i];
+        }
+        for(int i=l-d;i<l;i++)
+        {
+            arr[i]=t[k++];
+        }
+    }
 
     // Right rotate
 
@@ -62,6 +81,20 @@ public class RotateArray_189 {
 
     }
 
+    public static void rotateLeft(int a[], int k) {  // rotate by k from last to first
+        int l = a.length;
+        k = k % l;
+        if(k < 0){
+            k += l;
+        }
+
+        reverse(a, 0, l - 1);  // whole reverse
+        reverse(a, 0, k-1);  // first half reverse
+        reverse(a,k , l - 1);  // second half reverse
+
+    }
+
+
     public static void main(String[] args) {
 
         int a[] = {1, 2, 3, 4, 5, 6, 7};
@@ -74,6 +107,21 @@ public class RotateArray_189 {
         {
             System.out.print(a[i]);
         }
+        System.out.println();
+
+        rotateLeft(a, k);
+        for(int i =0;i<a.length;i++)
+        {
+            System.out.print(a[i]);
+        }
+
+        System.out.println();
+        rotate(a, k);
+        for(int i =0;i<a.length;i++)
+        {
+            System.out.print(a[i]);
+        }
+
 
     }
 }
