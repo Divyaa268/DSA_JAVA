@@ -2,6 +2,8 @@ package Arrays;
 
 public class TwoSum {
 
+    // two sum leet code
+
     public static void main(String args[])
     {
         int nums[] = {2,7,11, 15};
