@@ -110,16 +110,16 @@ public class SpiralMatrix {
             }
         }
 
+        List<Integer> ll = new ArrayList<>();
+
+        ll = spiral(a);
+
         // output
-        for(int i=0;i<4;i++)
+        for(int i=0;i<ll.size();i++)
         {
-            for(int j=0;j<4;j++)
-            {
-                System.out.print(a[i][j] + " ");
-            }
-            System.out.println();
+            System.out.print(ll.get(i) + " ");
         }
 
-        spiral(a);
+
     }
 }
