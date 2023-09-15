@@ -12,9 +12,14 @@ public class ReverseArray {
 
         while(f<l)
         {
-            int temp = a[l];
-            a[l] = a[f];
-            a[f] = temp;
+//            int temp = a[l];
+//            a[l] = a[f];
+//            a[f] = temp;
+
+
+            int temp = a[f];
+            a[f] = a[l];
+            a[l] = temp;
 
             f++;
             l--;
