@@ -65,8 +65,8 @@ public class MajorityElement2_229 {
     }
     public static void main(String[] args) {
 
-//        int a[] = {2,2,1,1,1,2,2};
-        int a[] = {-1,-1,-1};
+        int a[] = {2,2,1,1,1,2,2};
+//        int a[] = {-1,-1,-1};
         List<Integer> element = majorityElement2(a);
         System.out.println(element);
     }
