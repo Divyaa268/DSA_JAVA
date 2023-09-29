@@ -4,7 +4,7 @@ public class PlusOne {
 
     public static void main(String[] args) {
 
-        int a[] = {5, 6};
+        int a[] = {4,9, 9};
         int res[] = plusOne(a);
 
         for (int i = 0; i < res.length; i++)
