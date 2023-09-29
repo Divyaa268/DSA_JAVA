@@ -70,13 +70,13 @@ public class RotateArray_189 {
             k += l;
         }
 
-        reverse(a, 0, l - k - 1);  // first half reverse
-        reverse(a, l - k, l - 1);  // second half reverse
-        reverse(a, 0, l - 1);  // whole reverse
-
-//        reverse(a, 0, k);  // first half reverse
-//        reverse(a, k+1, l - 1);  // second half reverse
+//        reverse(a, 0, l - k - 1);  // first half reverse
+//        reverse(a, l - k, l - 1);  // second half reverse
 //        reverse(a, 0, l - 1);  // whole reverse
+
+        reverse(a, 0, k);  // first half reverse
+        reverse(a, k+1, l - 1);  // second half reverse
+        reverse(a, 0, l - 1);  // whole reverse
 
 
     }
@@ -97,9 +97,11 @@ public class RotateArray_189 {
 
     public static void main(String[] args) {
 
-        int a[] = {1, 2, 3, 4, 5, 6, 7};
+//        int a[] = {1, 2, 3, 4, 5, 6, 7};
 //        int a[] = {-1,-100,3,99};
-        int k = 3;
+
+        int a[] = {1,2,3,4,5};
+        int k = 2;
 
         rotateRight(a, k);
 
