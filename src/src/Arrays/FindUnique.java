@@ -1,5 +1,6 @@
 package Arrays;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class FindUnique {
