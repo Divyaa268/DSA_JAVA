@@ -27,7 +27,6 @@ public class CountingValleys {
             }
         }
         return valley;
-
     }
 
     public static void main(String[] args) {
