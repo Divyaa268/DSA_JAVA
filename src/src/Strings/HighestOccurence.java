@@ -40,3 +40,5 @@ public class HighestOccurence {
 
     }
 }
+
+//int res = Integer.max(res, map.get(key))
