@@ -14,8 +14,10 @@ public class PrintPermutations {
         {
             char currChar = s.charAt(i);
             // "abc" -> "ab"
+            // all char before curr char       // all char after curr char
             String newStr = s.substring(0,i) + s.substring(i+1);
 
+            // send all rem char to next level   // adding new char to result
             permute(newStr, permutation+currChar);
         }
     }
