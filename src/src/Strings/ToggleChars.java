@@ -10,11 +10,12 @@ public class ToggleChars {
         int n = sc.nextInt();
         char c[] = new char[n];
         String s = "Hello";
+        c = s.toCharArray();
 
-        for (int i=0;i<s.length();i++)
-        {
-            c[i] = s.charAt(i);
-        }
+//        for (int i=0;i<s.length();i++)
+//        {
+//            c[i] = s.charAt(i);
+//        }
 
         toggle(c);
 
