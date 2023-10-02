@@ -23,8 +23,10 @@ public class SmallestPositiveNotExist {
         HashSet<Integer> set = new HashSet<>();
 
         // Iterate through the array and add all positive integers to the set
-        for (int num : A) {
-            if (num > 0) {
+        for (int num : A)
+        {
+            if (num > 0)
+            {
                 set.add(num);
             }
         }
