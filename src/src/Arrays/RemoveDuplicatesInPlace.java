@@ -6,8 +6,8 @@ public class RemoveDuplicatesInPlace {
 
     public static void main(String[] args) {
 
-        int a[] = {1,1,2};
-//        int a[] = {0,0,1,1,1,2,2,3,3,4};
+//        int a[] = {1,1,2};
+        int a[] = {0,0,1,1,1,2,2,3,3,4};
         int res = removeDuplicates(a);
         System.out.println(res);
 
