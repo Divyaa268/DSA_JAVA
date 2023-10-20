@@ -1,5 +1,7 @@
 package Strings;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class HighestOccurence {
@@ -31,6 +33,35 @@ public class HighestOccurence {
 
     }
 
+    public static char highChar(String s)
+    {
+        char[] st = s.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for(int i=0;i<st.length;i++)
+        {
+            if(map.containsKey(st[i]))
+            {
+                map.put(st[i], map.get(st[i]) + 1);
+            }
+            else
+            {
+                map.put(st[i], 1);
+            }
+        }
+
+        int max = Integer.MIN_VALUE;
+        char maxChar = ' ';
+        for(Character key : map.keySet())
+        {
+            if(map.get(key) > max )
+            {
+                max = map.get(key);
+                maxChar = key;
+            }
+        }
+        return maxChar;
+    }
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
