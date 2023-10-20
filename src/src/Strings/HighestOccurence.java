@@ -69,6 +69,9 @@ public class HighestOccurence {
         char c = highestOccuringChar(st);
         System.out.println(c);
 
+        char ch = highChar(st);
+        System.out.println("Using hashmap - " + ch);
+
     }
 }
 
