@@ -12,14 +12,13 @@ public class IsomorphicStrings {
         int [] a2 = new int[256];
 
 
-
         for(int i=0;i<s.length();i++)
         {
             char a = s.charAt(i);
             char b = t.charAt(i);
 
-            System.out.println("f" + a1[a]);
-            System.out.println("f" + a2[b]);
+//            System.out.println("f" + a1[a]);
+//            System.out.println("f" + a2[b]);
 
             if(a1[a] != a2[b])
             {
@@ -29,8 +28,8 @@ public class IsomorphicStrings {
             a1[a] = i+1;
             a2[b] = i+1;
 
-            System.out.println("s" + a1[a]);
-            System.out.println("s" + a2[b]);
+//            System.out.println("s" + a1[a]);
+//            System.out.println("s" + a2[b]);
 
         }
         return true;
@@ -39,7 +38,7 @@ public class IsomorphicStrings {
     public static void main(String[] args) {
 
         String s = "egg";
-        String t = "add";
+        String t = "abd";
 
         boolean b = isomorphic(s,t);
         System.out.println(b);
