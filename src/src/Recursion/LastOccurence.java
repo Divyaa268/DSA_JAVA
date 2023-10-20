@@ -2,19 +2,28 @@ package Recursion;
 
 public class LastOccurence {
 
-    public static int lastOccur(int a[], int i, int n)
+    public static int lastOccur(int a[], int i, int n) {
+//        if(i < 0)
+//        {
+//            return -1;
+//        }
+//        if(a[i] == n )
+//        {
+//            return i;
+//        }
+//        return lastOccur(a, i-1,n);
+//    }
 
-    {
-        if(i < 0)
-        {
-            return -1;
+        for (int j = a.length - 1; j >= 0; j--) {
+            if (a[j] == n)
+            {
+                return j;
+            }
         }
-        if(a[i] == n )
-        {
-            return i;
-        }
-        return lastOccur(a, i-1,n);
+        return -1;
     }
+
+
 
     public static void main(String[] args) {
         int a[] = {1,2,5,7,8,4,2};
