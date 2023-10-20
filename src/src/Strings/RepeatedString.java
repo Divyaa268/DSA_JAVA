@@ -52,11 +52,13 @@ public class RepeatedString {
 
         long strLength = s.length();
 
-        //count of the number ofa in the given string
+        //count of the number of 'a' in the given string
         int count = 0;
 
-        for (int i = 0; i < strLength; i++) {
-            if (s.charAt(i) == 'a') {
+        for (int i = 0; i < strLength; i++)
+        {
+            if (s.charAt(i) == 'a')
+            {
                 count++;
 
             }
@@ -64,13 +66,16 @@ public class RepeatedString {
 
         long repeatedTimes = n / strLength;
 
-        //find the length of dtring left agter repetiotions
+        //find the length of string left after repetitions
         long stringLeftLength = n - (strLength * repeatedTimes);
 
         //count remaining repetitions
         int extra = 0;
-        for (int i = 0; i < stringLeftLength; i++) {
-            if (s.charAt(i) == 'a') {
+
+        for (int i = 0; i < stringLeftLength; i++)
+        {
+            if (s.charAt(i) == 'a')
+            {
                 extra++;
             }
         }
