@@ -1,6 +1,7 @@
 package Arrays;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class SalesByMatch {
@@ -41,6 +42,28 @@ public class SalesByMatch {
         return pairs;
     }
 
+
+    public static int sockMerchant1(int n, List<Integer> ar) { // passes all test cases
+        // Write your code here
+
+        HashSet hs = new HashSet<>();
+        int pair = 0;
+
+        for(int val : ar)
+        {
+            if(hs.contains(val))
+            {
+                pair++;
+                hs.remove(val);
+            }
+            else
+            {
+                hs.add(val);
+            }
+        }
+        return pair;
+    }
+
     public static void main(String[] args) {
 
         int n = 9;
@@ -66,6 +89,9 @@ public class SalesByMatch {
 
         int pairs = sockMerchant(n, socks);
         System.out.println("No. of socks pair : " + pairs);
+
+        int pair = sockMerchant1(n, socks);
+        System.out.println("No. of socks pair : " + pair);
 
     }
 }
