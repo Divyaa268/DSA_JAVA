@@ -25,32 +25,60 @@ public class RepeatedString {
 //
 //    }
 
-    public static long repeatedString(String s, long n) // does not pass all test cases on hacker rank
-    {
-        int c =0;
+//    public static long repeatedString(String s, long n) // does not pass all test cases on hacker rank
+//    {
+//        int c = 0;
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            if (s.charAt(i) == 'a') {
+//                c++;
+//            }
+//        }
+//        long c1 = c * n / s.length(); // gives no. of a's in string of len n perfectly div by s.len
+//
+//        long c2 = 0;
+//
+//        for (int i = 0; i < n % s.length(); i++) // for remaining string with a's with rem of s.len
+//        {
+//            if (s.charAt(i) == 'a') {
+//                c2++;
+//            }
+//        }
+//        return c1 + c2;
+//
+//    }
 
-        for(int i=0;i < s.length();i++)
-        {
-            if(s.charAt(i) == 'a')
-            {
-                c++;
+    public static long repeatedString(String s, long n) {
+
+        long strLength = s.length();
+
+        //count of the number ofa in the given string
+        int count = 0;
+
+        for (int i = 0; i < strLength; i++) {
+            if (s.charAt(i) == 'a') {
+                count++;
+
             }
         }
-        long c1 = c * n/s.length(); // gives no. of a's in string of len n perfectly div by s.len
 
-        long c2 = 0;
+        long repeatedTimes = n / strLength;
 
-        for(int i =0; i< n%s.length();i++) // for remaining string with a's with rem of s.len
-        {
-            if(s.charAt(i) == 'a')
-            {
-                c2++;
+        //find the length of dtring left agter repetiotions
+        long stringLeftLength = n - (strLength * repeatedTimes);
+
+        //count remaining repetitions
+        int extra = 0;
+        for (int i = 0; i < stringLeftLength; i++) {
+            if (s.charAt(i) == 'a') {
+                extra++;
             }
         }
-        return c1 + c2;
 
+        long totalCount = (repeatedTimes * count) + extra;
+
+        return totalCount;
     }
-
 
 
         public static void main(String[] args) {
