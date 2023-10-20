@@ -49,11 +49,13 @@ public class HashSetBasics {
         // iteration on hashset
         Iterator it = cities.iterator();
 
+        System.out.println("iterator----------");
         while (it.hasNext())
         {
             System.out.println(it.next());
         }
 
+        System.out.println("normal-----------");
         for( String city : cities)
         {
             System.out.println(city);
