@@ -40,7 +40,7 @@ public class DoesSContainT {
     }
 
     public static void main(String[] args) {
-        String a ="aackkodliwnkgd";
+        String a ="aakkodliwnkgdc";
         String b = "coding";
 
         boolean r=checkSeq(a,b);
