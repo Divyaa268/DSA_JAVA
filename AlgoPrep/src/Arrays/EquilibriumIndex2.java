@@ -19,12 +19,14 @@ public class EquilibriumIndex2 {
 
         int i = equiIndex(a);
 
-        System.out.println("Index is " + i);
+//        System.out.println("Index is " + i);
+        System.out.println("Count is : "+ i);
     }
 
     public static int equiIndex(int a[])
     {
         int sum = 0;
+        int c = 0;
 
         for(int i =0;i<a.length;i++)
         {
@@ -40,10 +42,12 @@ public class EquilibriumIndex2 {
 
             if(left == right)
             {
-                return i;
+//                return i;
+                c++;
             }
             left += a[i];
         }
-        return -1;
+//        return -1;
+        return c;
     }
 }
