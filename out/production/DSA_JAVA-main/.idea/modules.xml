@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AlgoPrep/AlgoPrep.iml" filepath="$PROJECT_DIR$/AlgoPrep/AlgoPrep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/DSA_JAVA.iml" filepath="$PROJECT_DIR$/.idea/DSA_JAVA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPS_A1/PPS_A1.iml" filepath="$PROJECT_DIR$/PPS_A1/PPS_A1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Problems151/Problems151.iml" filepath="$PROJECT_DIR$/Problems151/Problems151.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/src.iml" filepath="$PROJECT_DIR$/src/src.iml" />
+    </modules>
+  </component>
+</project>
