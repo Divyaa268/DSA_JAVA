@@ -1,24 +1,27 @@
 package PracticeDSA;
 
 public class MedianOptimized {
-        static double Median(int[] A, int[] B)
+        static double Median(int[] A, int[] B)  // tc : o(log(min(n,m))  sc : o(1)
         {
             int n = A.length;
             int m = B.length;
+
             if (n > m)
-                return Median(B,
-                        A); // Swapping to make A smaller
+                return Median(B, A); // Swapping to make A smaller
 
             int start = 0;
             int end = n;
             int realmidinmergedarray = (n + m + 1) / 2;
 
-            while (start <= end) {
+            while (start <= end)
+            {
                 int mid = (start + end) / 2;
+
                 int leftAsize = mid;
+
                 int leftBsize = realmidinmergedarray - mid;
-                int leftA
-                        = (leftAsize > 0)
+
+                int leftA = (leftAsize > 0)
                         ? A[leftAsize - 1]
                         : Integer
                         .MIN_VALUE; // checking overflow
@@ -49,7 +52,6 @@ public class MedianOptimized {
             return 0.0;
         }
 
-        // Driver code
         public static void main(String[] args)
         {
             int[] arr1 = { -5, 3, 6, 12, 15 };

@@ -13,7 +13,8 @@ public class MedianSortedArray {
             }
         }
 
-        private static int[] mergeArrays(int[] nums1, int[] nums2) {
+        private static int[] mergeArrays(int[] nums1, int[] nums2) {  // tc : O(m+n)   sc : O(m+n)
+
             int[] mergedArray = new int[nums1.length + nums2.length];
             int i = 0, j = 0, k = 0;
 
