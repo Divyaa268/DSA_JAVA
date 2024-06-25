@@ -61,4 +61,20 @@ public class RotateBy90 {
                 }
             }
         }
+
+    public static int[][] rotateBy90NonSquare(int[][] a) {  // when the matrix isn't a square
+        int r = a.length;
+        int c = a[0].length;
+
+        int[][] rotated = new int[c][r];  // The new rotated matrix will have dimensions c x r
+
+        // Transpose and reverse
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                rotated[j][r - 1 - i] = a[i][j];
+            }
+        }
+
+        return rotated;
+    }
 }
