@@ -66,19 +66,13 @@ public class RotateArray_189 {
     public static void rotateRight(int a[], int k) {
         int l = a.length;
         k = k % l;
-        if(k < 0){
+        if (k < 0) {
             k += l;
         }
 
-//        reverse(a, 0, l - k - 1);  // first half reverse
-//        reverse(a, l - k, l - 1);  // second half reverse
-//        reverse(a, 0, l - 1);  // whole reverse
-
-        reverse(a, 0, k-1);  // first half reverse
-        reverse(a, k, l - 1);  // second half reverse
+        reverse(a, 0, l - k - 1);  // first half reverse
+        reverse(a, l - k, l - 1);  // second half reverse
         reverse(a, 0, l - 1);  // whole reverse
-
-
     }
 
     public static void rotateLeft(int a[], int k) {  // rotate by k from last to first
