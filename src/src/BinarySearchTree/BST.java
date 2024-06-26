@@ -377,6 +377,32 @@ public class BST {
 
     }
 
+    public int rangeSumBST(Node root, int k1, int k2) {
+
+        if (root == null) {
+            return 0;
+        }
+
+        int sum = 0;
+
+        // Check if we need to explore the left subtree
+        if (root.data > k1) {
+            sum += rangeSumBST(root.left, k1, k2);
+        }
+
+        // Add the current node's value if it's within the range
+        if (root.data >= k1 && root.data <= k2) {
+            sum += root.data;
+        }
+
+        // Check if we need to explore the right subtree
+        if (root.data < k2) {
+            sum += rangeSumBST(root.right, k1, k2);
+        }
+
+        return sum;
+    }
+
     public static void main(String[] args) {
 
 //        int values[] = {5,1,3,4,2,7};
