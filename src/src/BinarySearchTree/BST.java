@@ -96,6 +96,8 @@ public class BST {
 
     public static Node delete(Node root, int value)
     {
+        // check in which subtree is the node to deleted present
+        // traverse to that node
         if(root.data < value)
         {
             root.right = delete(root.right, value);
@@ -152,6 +154,28 @@ public class BST {
         }
     }
 
+    // correct/better version
+//    public static void printInRange(Node root, int k1, int k2) {
+//        if (root == null) {
+//            return;
+//        }
+//
+//        // Check if we need to explore the left subtree
+//        if (root.data > k1) {
+//            printInRange(root.left, k1, k2);
+//        }
+//
+//        // Print the current node if it's within the range
+//        if (root.data >= k1 && root.data <= k2) {
+//            System.out.print(root.data + " ");
+//        }
+//
+//        // Check if we need to explore the right subtree
+//        if (root.data < k2) {
+//            printInRange(root.right, k1, k2);
+//        }
+//    }
+
     public static void printPath(ArrayList<Integer> path)
     {
         for (int i=0;i<path.size(); i++)
@@ -201,6 +225,22 @@ public class BST {
 
         return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
     }
+
+//    class Solution {
+//        public boolean isValidBST(TreeNode root) {
+//            return isValidBST(root,Long.MIN_VALUE, Long.MAX_VALUE);
+//        }
+//
+//        private boolean isValidBST(TreeNode node, long min, long max) {
+//            if (node == null) {
+//                return true;
+//            }
+//            if (node.val <= min || node.val >= max) {
+//                return false;
+//            }
+//            return isValidBST(node.left, min, node.val) && isValidBST(node.right, node.val, max);
+//        }
+//    }
 
     public static Node createMirrorBST(Node root)
     {
@@ -319,6 +359,23 @@ public class BST {
         return new Info(false, size, min, max);
     }
 
+    public int minDiffInBST(Node root) {
+
+        ArrayList<Integer> l = new ArrayList<>();
+
+        getInorder(root, l);
+
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 1; i < l.size(); i++)
+        {
+            int diff = l.get(i) - l.get(i - 1);
+            minDiff = Math.min(minDiff, diff);
+        }
+
+        return minDiff;
+
+    }
 
     public static void main(String[] args) {
 
@@ -365,8 +422,8 @@ public class BST {
 //            System.out.println("Invalid BST");
 //        }
 
-//        root = createMirrorBST(root);
-//        preOrder(root);
+        root = createMirrorBST(root);
+        preOrder(root);
 
 //        root = createBalancedBST(values, 0, values.length-1);
 //        preOrder(root);
@@ -374,8 +431,8 @@ public class BST {
 //        root = convertToBalancedBST(root);
 //        preOrder(root);
 
-        Info info = largestBST(root);
-        System.out.println("Largest BST Size - " + maxSize);
+//        Info info = largestBST(root);
+//        System.out.println("Largest BST Size - " + maxSize);
 
 
     }
