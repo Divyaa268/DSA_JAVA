@@ -22,13 +22,13 @@ public class AtlanticPacific {
         boolean[][] atlantic = new boolean[m][n];
 
         for (int i = 0; i < m; i++) {
-            dfs(heights, pacific, i, 0);
-            dfs(heights, atlantic, i, n - 1);
+            dfs(heights, pacific, i, 0);  // left most Pacific
+            dfs(heights, atlantic, i, n - 1);  // right most Atlantic
         }
 
         for (int j = 0; j < n; j++) {
-            dfs(heights, pacific, 0, j);
-            dfs(heights, atlantic, m - 1, j);
+            dfs(heights, pacific, 0, j);   // Top most Pacific
+            dfs(heights, atlantic, m - 1, j);  // Bottom most Atlantic
         }
 
         for (int i = 0; i < m; i++) {
