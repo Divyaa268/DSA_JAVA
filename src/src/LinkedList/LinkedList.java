@@ -95,6 +95,28 @@ public class LinkedList {
         }
     }
 
+//    public void printElementAtIndex(int index) {
+//        if (head == null) {
+//            System.out.println("List is empty");
+//            return;
+//        }
+//
+//        Node current = head;
+//        int count = 0;
+//
+//        while (current != null) {
+//            if (count == index) {
+//                System.out.println("Element at index " + index + " is " + current.data);
+//                return;
+//            }
+//            count++;
+//            current = current.next;
+//        }
+//
+//        System.out.println("Index out of bounds");
+//    }
+
+
     public int removeFirst()
     {
         if(length == 0)
@@ -289,6 +311,31 @@ public class LinkedList {
 
     }
 
+    // USING ARRAY LIST
+//    public boolean isPalindrome() {
+//        ArrayList<Integer> list = new ArrayList<>();
+//        Node current = head;
+//
+//        // Traverse the linked list and add elements to the ArrayList
+//        while (current != null) {
+//            list.add(current.data);
+//            current = current.next;
+//        }
+//
+//        // Check if the ArrayList is a palindrome
+//        int left = 0;
+//        int right = list.size() - 1;
+//        while (left < right) {
+//            if (!list.get(left).equals(list.get(right))) {
+//                return false;
+//            }
+//            left++;
+//            right--;
+//        }
+//
+//        return true;
+//    }
+
     public boolean isCycle()
     {
         Node slow = head;
@@ -341,7 +388,7 @@ public class LinkedList {
             fast = fast.next;
         }
 
-        // Remove cycle
+        // Remove cycle WHEN FAST == SLOW (THAT IS THE MEETING POINT)
         prev.next = null;
     }
 
@@ -461,6 +508,48 @@ public class LinkedList {
             rightH = nextR;
         }
     }
+
+    // Helper method to get the length of a linked list
+    private static int getLength(Node head) {
+        int length = 0;
+        while (head != null) {
+            length++;
+            head = head.next;
+        }
+        return length;
+    }
+
+
+    // Find the intersection node of two linked lists
+    public static Node getIntersectionNode(Node headA, Node headB) {
+        if (headA == null || headB == null) return null;
+
+        // Get the lengths of both linked lists
+        int lengthA = getLength(headA);
+        int lengthB = getLength(headB);
+
+        // Align the starting points
+        while (lengthA > lengthB) {
+            headA = headA.next;
+            lengthA--;
+        }
+        while (lengthB > lengthA) {
+            headB = headB.next;
+            lengthB--;
+        }
+
+        // Traverse both lists to find the intersection
+        while (headA != null && headB != null) {
+            if (headA == headB) {
+                return headA;  // Intersection found
+            }
+            headA = headA.next;
+            headB = headB.next;
+        }
+
+        return null;  // No intersection
+    }
+
 
     public static void main(String args[])
     {
