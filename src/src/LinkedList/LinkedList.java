@@ -164,6 +164,28 @@ public class LinkedList {
         return val;
     }
 
+    public void removeLast1() {
+        if (head == null) {
+            // List is empty, nothing to remove
+            return;
+        }
+
+        if (head.next == null) {
+            // List has only one node, remove it
+            head = null;
+            return;
+        }
+
+        // Find the second-to-last node
+        Node current = head;
+        while (current.next.next != null) {
+            current = current.next;
+        }
+
+        // Remove the last node
+        current.next = null;
+    }
+
     public int searchIterative(int key)  // TC - O(N)
     {
         Node temp = head;
